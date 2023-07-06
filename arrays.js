@@ -52,7 +52,7 @@ const checkIfEven = numbers.map(function (num) {
   // we are going to return an object (dictionary)
   return {
     value: num,
-    isEven: num % 2 === 0,
+    isEven: num % 2 === 0
   };
 });
 
@@ -128,3 +128,111 @@ const descendingSort = unsortedNums.slice().sort(function (value1, value2) {
   return value2 - value1;
 });
 console.log(descendingSort);
+
+// lets make an object (dictionary) of books with their ratings and compare them
+
+const books = [
+  {
+    title: "Good Omens",
+    author: ["Terry P"],
+    rating: 4.25,
+    genres: ["fiction", "fantasy"]
+  },
+  {
+    title: "Changing the mind",
+    authors: ["Zaddie s"],
+    rating: 4.42,
+    genres: ["fiction"]
+  },
+  {
+    title: "Mind",
+    authors: ["Zaddie s"],
+    rating: 4.03,
+    genres: ["fiction"]
+  },
+  {
+    title: "Body",
+    authors: ["Ryan s"],
+    rating: 4.3,
+    genres: ["fantasy"]
+  }
+];
+
+const sortBooksByRatingAsc = books.slice().sort((book1, book2) => {
+  const rating1 = book1.rating;
+  const rating2 = book2.rating;
+  return rating1 - rating2;
+});
+
+console.log(sortBooksByRatingAsc);
+
+// reduce
+// using implicit return (no squigly)
+const sum = numbers.reduce(
+  (accumulator, currentValue) => accumulator + currentValue
+);
+
+console.log(`The sum is ${sum}`);
+
+// lets try and find the max value in the array:
+
+const maxValue = numbers.reduce(function (previousValue, currentValue) {
+  return currentValue > previousValue ? currentValue : previousValue;
+});
+
+console.log(`Max value is ${maxValue}`);
+
+// another way to do the same thing:
+
+const maxValue2 = numbers.reduce((previousValue, currentValue) => {
+  if (currentValue > previousValue) {
+    return currentValue;
+  } else {
+    return previousValue;
+  }
+});
+
+console.log(`Max value is ${maxValue2}`);
+
+const minVlaue = numbers.reduce((previousValue, currentValue) => {
+  return Math.min(previousValue, currentValue);
+});
+
+console.log(`Min value is ${minVlaue}`);
+
+// tallying the number of items of each type
+
+const votes = [
+  "y",
+  "y",
+  "y",
+  "y",
+  "y",
+  "y",
+  "y",
+  "y",
+  "y",
+  "n",
+  "n",
+  "n",
+  "n",
+  "n",
+  "n",
+  "n",
+  "absent"
+];
+
+// empty object as the initial value
+const countVotes = votes.reduce((tally, currentValue) => {
+  // we want to add to the empty object by adding the number of y's and n's
+
+  // check to see if we have that key in the object
+  if (tally[currentValue]) {
+    tally[currentValue]++;
+  } else {
+    tally[currentValue] = 1;
+  }
+  return tally;
+}, {});
+
+console.log(countVotes);
