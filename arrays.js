@@ -167,7 +167,7 @@ const sortBooksByRatingAsc = books.slice().sort((book1, book2) => {
 console.log(sortBooksByRatingAsc);
 
 // reduce
-// using implicit return (no squigly)
+// using implicit return (no squigly bracket)
 const sum = numbers.reduce(
   (accumulator, currentValue) => accumulator + currentValue
 );
@@ -236,3 +236,18 @@ const countVotes = votes.reduce((tally, currentValue) => {
 }, {});
 
 console.log(countVotes);
+
+// testing return functions
+function testofReturningFunctions(passedInValue) {
+  return (anotherValue) => {
+    console.log(`another value ${anotherValue}`);
+    console.log(`passed in value: ${passedInValue}`);
+    return passedInValue * anotherValue;
+  };
+}
+
+const hello = testofReturningFunctions(6);
+
+hello(2);
+// another value 2
+// passed in value: 6

@@ -42,12 +42,12 @@ number = 1.0; // both of are type number
 let person = {
   // keys and their corresponding value
   name: "Ryan",
-  age: 20,
+  age: 20
 }; //curly braces are object literals
 
 // to change the name of a person:
 
-// dot notaion
+// dot notation
 person.name = "Ryan2";
 
 // bracket notation (is used for dynamic programming when we dont know the exact property name the user is going to pick)
