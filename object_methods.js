@@ -61,3 +61,35 @@ const math2 = {
     return a * b;
   }
 };
+
+// using this keyword
+
+// create an object
+const newPerson = {
+  first: "Ryan",
+  last: "Haniff",
+  nickName: "Ry",
+  fullName() {
+    // destructure newPerson object using this
+    const { first, last, nickName } = this;
+
+    // getting first and last from destructred this
+    console.log(`${first} ${last}`);
+
+    // use this to access object variables
+    return `${this.first} ${this.last}`;
+  },
+  printBio() {
+    console.log(`${this.first} ${this.last} is a person`);
+  },
+
+  // not common to use arrow functinos in objects
+  laugh: () => {
+    // refers the the window, not the object newPerson, because its an arrow function
+    console.log(this);
+    console.log(`${this.nickName} says lol`);
+  }
+};
+
+// this is referencing the global window, not the newPerson object
+const printBio = person.printBio();
