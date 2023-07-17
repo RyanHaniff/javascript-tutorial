@@ -92,4 +92,31 @@ const newPerson = {
 };
 
 // this is referencing the global window, not the newPerson object
-const printBio = person.printBio();
+const printBio = newPerson.printBio();
+
+// annoyer
+const greet = {
+  greeting: ["hello", "hi", "how are you"],
+  pickPhrase() {
+    // destructuring
+    // const { greeting } = this;
+    // or we can use this.greeting
+    const idx = Math.floor(Math.random() * this.greeting.length);
+    return this.greeting[idx];
+  },
+  start() {
+    console.log(this); //references the object
+    // this gives use an error becauser its set to the window
+    // this is because setInterval is calling the pickPhrase function which is a window function (global)
+    // setInterval(this.pickPhrase(), 2000);
+
+    // we have to use arrow function to make it call the greet object
+    this.timerId = setInterval(() => {
+      console.log(this.pickPhrase());
+    }, 500);
+  },
+  stop() {
+    // to get access to setInterval we have to use this.value to have a reference to it
+    clearInterval(this.timerId);
+  }
+};
