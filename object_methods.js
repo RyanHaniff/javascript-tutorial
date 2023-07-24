@@ -120,3 +120,40 @@ const greet = {
     clearInterval(this.timerId);
   }
 };
+
+// practice
+
+function makeDeck() {
+  const deck = [];
+  const suits = ["hearts", "diamonds", "spades", "clubs"];
+  const values = "2,3,4,5,6,7,8,9,10,J,Q,K,A";
+  console.log(values);
+  // itterate over the values, use .split() to turn the string into an array
+  for (let value of values.split(",")) {
+    // console.log(value);
+    for (let suit of suits) {
+      // create a new object and push it to the deck array
+      deck.push({ value: value, suit: suit });
+    }
+  }
+  return deck;
+}
+
+// using an object isntead
+
+const deck = {
+  deck: [],
+  suits: ["hearts", "diamonds", "spades", "clubs"],
+  values: "2,3,4,5,6,7,8,9,10,J,Q,K,A".split(","),
+  createDeck() {
+    // or-in provides access to the object keys , whereas the for-of operator provides access to the values of those keys
+    for (let value of this.values) {
+      for (let suit of this.suits) {
+        this.deck.push({ value, suit });
+      }
+    }
+  },
+  printDeck() {
+    console.log(deck);
+  }
+};
